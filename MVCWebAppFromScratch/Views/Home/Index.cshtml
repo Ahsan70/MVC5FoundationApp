@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using MVCWebAppFromScratch.Models
+@model MVCWebAppFromScratch.Models.Employee
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -6,7 +8,19 @@
     <title>Index</title>
 </head>
 <body>
-    <div> 
-    </div>
+    @ListHelper(Model)
+   @using (Html.BeginForm("myform"))
+   {
+       @Html.TextBoxFor(x => x.Name)
+       @Html.TextBoxFor(x => x.Address)
+       <input type="submit" value="Save Data"/>
+   }
+
 </body>
 </html>
+@helper ListHelper(Employee emp)
+{
+    <div>
+        @emp.Address
+    </div>
+}
